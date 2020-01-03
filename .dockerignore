@@ -1,0 +1,6 @@
+logs/
+holiday/
+node_modules/
+Dockerfile_alpine
+README.md
+decrypt_test.js

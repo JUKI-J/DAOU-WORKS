@@ -1,0 +1,44 @@
+FROM node:11-alpine
+
+ENV CHROME_BIN="/usr/bin/chromium-browser" \
+    NODE_ENV="production"
+
+RUN set -x \
+    && apk update \
+    && apk upgrade \
+    && apk add --no-cache \
+    dumb-init \
+    udev \
+    ttf-freefont \
+    chromium \
+    #&& npm install puppeteer-core@1.10.0 --silent \
+    && apk add tzdata \
+    && cp /usr/share/zoneinfo/Asia/Seoul /etc/localtime \
+      \
+      # Cleanup
+      && apk del --no-cache make gcc g++ python binutils-gold gnupg libstdc++ \
+      && rm -rf /usr/include \
+      && rm -rf /var/cache/apk/* /root/.node-gyp /usr/share/man /tmp/* \
+      && echo
+
+ENV             WORKDIR /app/dawoo-works
+WORKDIR         $WORKDIR
+
+COPY            ./ $WORKDIR/
+
+RUN             npm install
+
+RUN             echo $'\n\n\
+====================================================================================================\n\
+1) docker run \n\
+docker run --name works -itd works /bin/sh \n\
+2) docker exec \n\
+docker exec -it works /bin/sh \n\
+3) Initialize Holiday information json \n\
+node holiday-init.js \n\
+4) Run customized cronjob \n\
+node cronjob.js & \n\
+====================================================================================================\n\
+>>>>> FOR MORE : README.md \n\
+====================================================================================================\n\
+\n\n'

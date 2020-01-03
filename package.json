@@ -1,0 +1,30 @@
+{
+  "name": "daou-works",
+  "version": "1.0.0",
+  "description": "출퇴근 자동 관리",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run_holiday": "node holiday-generator.js",
+    "run_work": "node work-on-off.js",
+    "run_cron": "node cronjob.js",
+    "run_init": "node holiday-init.js"
+  },
+  "author": "JUKI",
+  "license": "ISC",
+  "dependencies": {
+    "app-root-path": "^3.0.0",
+    "cron": "^1.7.2",
+    "crypto-js": "^3.1.9-1",
+    "dotenv": "^8.2.0",
+    "fs": "0.0.1-security",
+    "moment": "^2.24.0",
+    "moment-timezone": "^0.5.27",
+    "puppeteer": "^1.19.0",
+    "request": "^2.34",
+    "request-promise": "^4.2.5",
+    "winston": "^3.2.1",
+    "winston-daily-rotate-file": "^4.2.1",
+    "xml-js": "^1.6.11"
+  }
+}
