@@ -39,7 +39,6 @@ const workOnOff = async () => {
       await logger.debug("-----File Not Found >>> [" + fileFullPath + "]");
       data = "";
     }
-    
     var isWorkDays = true;
     if (data !== '' && data !== "undefined") {
       const today = solYear + solMonth + solDay;
@@ -56,6 +55,8 @@ const workOnOff = async () => {
           isWorkDays = false;
         }
       }
+    }else{
+      data = "{}";
     }
 
     await logger.debug("-----DONE read JSON File >>> isWorkDays : [" + isWorkDays + "]");
